@@ -265,7 +265,7 @@ public class BOOK implements Comparable<BOOK> {
       return false;
     }
 
-    BOOK cmpBook = obj;
+    BOOK cmpBook = (BOOK) obj;
     return cmpBook.id == this.id;
   }
 
