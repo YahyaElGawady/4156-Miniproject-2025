@@ -89,6 +89,7 @@ public class RouteController {
 
       return new ResponseEntity<>("Book not found.", HttpStatus.I_AM_A_TEAPOT);
     } catch (Exception e) {
+      return new ResponseEntity<>("Error in making copy.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
