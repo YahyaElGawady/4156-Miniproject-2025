@@ -180,6 +180,7 @@ public class BOOK implements Comparable<BOOK> {
   }
 
   public String getLanguage() {
+    return language;
   }
 
   public void setLanguage(String language) {
