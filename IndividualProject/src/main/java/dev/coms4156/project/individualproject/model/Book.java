@@ -116,13 +116,9 @@ public class Book implements Comparable<Book> {
     return false;
   }
 
-  public boolean addCopy() {
-    if (totalCopies <= 0 || copiesAvailable <= 0) {
-      return false;
-    }
-    totalCopies--;
-    copiesAvailable--;
-    return true;
+  public void addCopy() {
+    totalCopies++;
+    copiesAvailable++;
   }
 
   /**
@@ -135,7 +131,7 @@ public class Book implements Comparable<Book> {
   public String checkoutCopy() {
     if (copiesAvailable > 0) {
       copiesAvailable--;
-      amountOfTimesCheckedOut--;
+      amountOfTimesCheckedOut++;
       LocalDate today = LocalDate.now();
       LocalDate dueDate = today.plusWeeks(2);
       String dueDateStr = dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE);

@@ -19,44 +19,44 @@ import org.springframework.http.ResponseEntity;
 @SpringBootTest
 public class RouteControllerUnitTests {
 
-    public RouteController routeController;
-    public MockApiService mockApiService;
+  public RouteController routeController;
+  public MockApiService mockApiService;
 
-    public Book testBook;
+  public Book testBook;
 
-    @BeforeEach
-    void setUp() {
-        mockApiService = new MockApiService();
-        routeController = new RouteController(mockApiService);
-    }
+  @BeforeEach
+  void setUp() {
+    mockApiService = new MockApiService();
+    routeController = new RouteController(mockApiService);
+  }
 
-    @Test
-    void getBookValidTest() {
-        testBook = new Book("All the mighty world :", 2);
-        ResponseEntity<?> response = routeController.getBook(2);
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(testBook, response.getBodygit ());
-    }
+  @Test
+  void getBookValidTest() {
+    testBook = new Book("All the mighty world :", 2);
+    ResponseEntity<?> response = routeController.getBook(2);
+    assertEquals(200, response.getStatusCodeValue());
+    assertEquals(testBook, response.getBody());
+  }
 
-    @Test
-    void getBookInvalidTest() {
-        ResponseEntity<?> response = routeController.getBook(-1);
-        assertEquals(404, response.getStatusCodeValue());
-        assertEquals("Book not found.", response.getBody());
-    }
+  @Test
+  void getBookInvalidTest() {
+    ResponseEntity<?> response = routeController.getBook(-1);
+    assertEquals(404, response.getStatusCodeValue());
+    assertEquals("Book not found.", response.getBody());
+  }
 
-    @Test
-    void makeCopyValidTest() {
-        testBook = mockApiService.getBooks().get(1);
-        ResponseEntity<?> response = routeController.addCopy(2);
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(testBook, response.getBody());
-    }
+  @Test
+  void makeCopyValidTest() {
+    testBook = mockApiService.getBooks().get(1);
+    ResponseEntity<?> response = routeController.addCopy(2);
+    assertEquals(200, response.getStatusCodeValue());
+    assertEquals(testBook, response.getBody());
+  }
 
-    @Test
-    void makeCopyInvalidTest() {
-        ResponseEntity<?> response = routeController.addCopy(-1);
-        assertEquals(404, response.getStatusCodeValue());
-        assertEquals("Book not found.", response.getBody());
-    }
+  @Test
+  void makeCopyInvalidTest() {
+    ResponseEntity<?> response = routeController.addCopy(-1);
+    assertEquals(404, response.getStatusCodeValue());
+    assertEquals("Book not found.", response.getBody());
+  }
 }

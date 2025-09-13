@@ -77,9 +77,8 @@ public class RouteController {
 
       return new ResponseEntity<>(mockApiService.getBooks(), HttpStatus.OK);
     } catch (Exception e) {
-      System.err.println(e);
       return new ResponseEntity<>("Error occurred when getting all available books",
-          HttpStatus.OK);
+          HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -95,7 +94,6 @@ public class RouteController {
   public ResponseEntity<?> addCopy(@PathVariable Integer bookId) {
     try {
       for (Book book : mockApiService.getBooks()) {
-        StringBuilder currBookId = new StringBuilder(book.getId());
         if (bookId.equals(book.getId())) {
           book.addCopy();
           return new ResponseEntity<>(book, HttpStatus.OK);

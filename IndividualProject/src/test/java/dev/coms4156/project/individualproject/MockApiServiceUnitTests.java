@@ -18,18 +18,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class MockApiServiceUnitTests {
 
-    public MockApiService mockApiService;
+  public MockApiService mockApiService;
 
-    @BeforeEach
-    public void setup() {
-        mockApiService = new MockApiService();
-    }
+  @BeforeEach
+  public void setup() {
+    mockApiService = new MockApiService();
+  }
 
-    @Test
-    public void updateBooksTest() {
-        assertEquals("All the mighty world :", mockApiService.getBooks().get(1).getTitle());
-        Book newBook = new Book("Temp Title", 2);
-        mockApiService.updateBook(newBook);
-        assertEquals("Temp Title", mockApiService.getBooks().get(1).getTitle());
-    }
+  @Test
+  public void updateBooksTest() {
+    assertEquals("All the mighty world :", mockApiService.getBooks().get(1).getTitle());
+    Book newBook = new Book("Temp Title", 2);
+    mockApiService.updateBook(newBook);
+    assertEquals("Temp Title", mockApiService.getBooks().get(1).getTitle());
+  }
 }
