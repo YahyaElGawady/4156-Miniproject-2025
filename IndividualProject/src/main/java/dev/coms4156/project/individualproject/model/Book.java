@@ -111,13 +111,18 @@ public class Book implements Comparable<Book> {
     if (totalCopies > 0 && copiesAvailable > 0) {
       totalCopies--;
       copiesAvailable--;
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
-  public void addCopy() {
-
+  public boolean addCopy() {
+    if (totalCopies <= 0 || copiesAvailable <= 0) {
+      return false;
+    }
+    totalCopies--;
+    copiesAvailable--;
+    return true;
   }
 
   /**
@@ -149,7 +154,7 @@ public class Book implements Comparable<Book> {
    *         {@code false} if no matching due date is found.
    */
   public boolean returnCopy(String date) {
-    if (returnDates.isEmpty()) {
+    if (!returnDates.isEmpty()) {
       for (int i = 0; i < returnDates.size(); i++) {
         if (returnDates.get(i).equals(date)) {
           returnDates.remove(i);
