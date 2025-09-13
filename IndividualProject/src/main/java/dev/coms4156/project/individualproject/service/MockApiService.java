@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class MockApiService {
 
   private ArrayList<Book> books;
-  private ArrayList<String> bags;
 
   /**
    * Constructs a new {@code MockApiService} and loads book data from a JSON file located at
@@ -36,7 +35,7 @@ public class MockApiService {
         System.out.println("Successfully loaded books from mockdata/books.json.");
       }
     } catch (Exception e) {
-    //System.err.println("Failed to load books: " + e.getMessage());
+      System.err.println("Failed to load books: " + e.getMessage());
     }
   }
 
