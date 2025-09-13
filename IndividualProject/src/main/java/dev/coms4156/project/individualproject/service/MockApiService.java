@@ -24,7 +24,7 @@ public class MockApiService {
    * If the file is not found, an empty list of books is initialized. If the file is found but
    * cannot be parsed, an error message is printed and no data is loaded.
    */
-  public MockAPIService() {
+  public MockApiService() {
     try (InputStream is = Thread.currentThread().getContextClassLoader()
         .getResourceAsStream("mockdata/books.json")) {
       if (is == null) {
@@ -62,7 +62,7 @@ public class MockApiService {
       }
     }
 
-    this.books = this.books;
+    this.books = tmpBooks;
   }
 
   public void printBooks() {

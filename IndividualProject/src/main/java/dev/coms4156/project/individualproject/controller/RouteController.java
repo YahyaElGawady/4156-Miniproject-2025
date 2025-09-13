@@ -1,7 +1,7 @@
 package dev.coms4156.project.individualproject.controller;
 
 import dev.coms4156.project.individualproject.model.Book;
-import dev.coms4156.project.individualproject.service.MockAPIService;
+import dev.coms4156.project.individualproject.service.MockApiService;
 import java.util.ArrayList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -102,7 +102,7 @@ public class RouteController {
         }
       }
 
-      return new ResponseEntity<>("Book not found.", HttpStatus.I_AM_A_TEAPOT);
+      return new ResponseEntity<>("Book not found.", HttpStatus.NOT_FOUND);
     } catch (Exception e) {
       return new ResponseEntity<>("Error in making copy.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
