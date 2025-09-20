@@ -151,4 +151,23 @@ public class RouteController {
       return  new ResponseEntity<>("Unable to generate recommendations", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+  @GetMapping({"/book/{bookId}/checkout"})
+  //@PatchMapping({"/book/{bookId}/checkout"})
+  public ResponseEntity<?> checkout(@PathVariable Integer bookId) {
+    try {
+      for (Book book : mockApiService.getBooks()) {
+        if (bookId.equals(book.getId())) {
+          if (book.hasCopies()) {
+            book.checkoutCopy();
+            return new ResponseEntity<>(book, HttpStatus.OK);
+          } else {
+            return new ResponseEntity<>("No copies available to checkout.", HttpStatus.BAD_REQUEST);
+          }
+        }
+      }
+      return new ResponseEntity<>("Book not found.", HttpStatus.NOT_FOUND);
+    } catch (Exception e) {
+      return new ResponseEntity<>("Error processing checkout.", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
 }
